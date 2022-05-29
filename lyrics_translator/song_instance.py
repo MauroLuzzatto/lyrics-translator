@@ -1,5 +1,4 @@
 from pathlib import Path
-from pprint import pprint
 
 from docx import Document
 
