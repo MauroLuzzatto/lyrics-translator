@@ -1,5 +1,5 @@
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 import torch
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 
 torch.multiprocessing.freeze_support()
 

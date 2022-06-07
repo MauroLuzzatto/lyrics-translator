@@ -1,15 +1,12 @@
-from pathlib import Path
-
-from docx import Document
-
-from lyrics_translator.translator import Translator
-from dotenv import dotenv_values
-
 import warnings
 from pathlib import Path
 from typing import List, Tuple
 
 import lyricsgenius
+from docx import Document
+from dotenv import dotenv_values
+
+from lyrics_translator.translator import Translator
 
 config = dotenv_values(".env")
 genius = lyricsgenius.Genius(config["GENIUS_ACCESS_TOKEN"])
