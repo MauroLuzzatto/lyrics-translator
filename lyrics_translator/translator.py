@@ -46,7 +46,7 @@ class Translator(object):
             )
             cache[model_name] = self.translator
 
-    def translate(self, text: str, max_lines: int = 20) -> str:
+    def translate(self, text: str, full: bool = True) -> str:
         """[summary]
 
         Args:
@@ -57,10 +57,26 @@ class Translator(object):
             str: [description]
         """
         print("Song is being translated, this can take a while...")
-        text = text.strip().split("\n")[:max_lines]
-        return "\n".join(
-            [output["translation_text"] for output in self.translator(text)]
-        )
+        max_lines = 20
+        list_of_text = text.strip().split("\n")
+        number_of_lines = len(list_of_text)
+        # text = text.strip().split("\n")[:max_lines]
+
+        if full:
+            numbers = int(number_of_lines / max_lines) + 1
+        else:
+            numbers = 1
+
+        output = []
+        for number in range(numbers):
+            start = number * max_lines
+            end = min((number + 1) * max_lines, number_of_lines)
+            print(start, end, number_of_lines)
+            translation = self.translator(list_of_text[start:end])
+            output.extend(
+                [output_text["translation_text"] for output_text in translation]
+            )
+        return "\n".join(output)
 
 
 if __name__ == "__main__":
@@ -76,8 +92,8 @@ if __name__ == "__main__":
         We then generate a translation for all the elements in the batch, decode the batch, and take the first element.
         Which is the translated text that we then print on screen.
     """
-
-    translator = get_translator_pipeline(language)
-    translation = get_translation(long_text, translator)
+    translator = Translator(language)
+    translator.get_translator_pipeline()
+    translation = translator.translate(long_text)
     print("----" * 10)
     print(translation)

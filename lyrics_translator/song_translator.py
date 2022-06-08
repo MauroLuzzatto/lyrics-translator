@@ -13,7 +13,7 @@ genius = lyricsgenius.Genius(config["GENIUS_ACCESS_TOKEN"])
 
 
 class SongTranslator(object):
-    def __init__(self, song, artist, language):
+    def __init__(self, song: str, artist: str, language: str = "de"):
         self.song = song
         self.artist = artist
         self.language = language
@@ -54,7 +54,13 @@ class SongTranslator(object):
     def _get_name(self):
         return f"{self.language}__{self.song}__{self.artist}".replace(" ", "_").lower()
 
-    def save(self, folder, kind="word"):
+    def save(self, folder: Path, kind: str = "txt"):
+        """_summary_
+
+        Args:
+            folder (Path): _description_
+            kind (str, optional): _description_. Defaults to "txt".
+        """
 
         self.header = self._get_header()
         self.name = self._get_name()
@@ -62,8 +68,12 @@ class SongTranslator(object):
         if kind == "word":
             document = Document()
             document.add_heading(self.header, level=1)
-            document.add_paragraph(self.text)
+            document.add_paragraph(self.translation)
             document.save(Path(folder / f"{self.name}.docx"))
+
+        elif kind == "txt":
+            with open(Path(folder / f"{self.name}.txt"), "w") as f:
+                f.write(self.translation)
 
     def __str__(self):
         seperator = "----" * 10
