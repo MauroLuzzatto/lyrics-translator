@@ -5,8 +5,6 @@ import torch
 from lyrics_translator import LyricsTranslator
 from lyrics_translator import create_folder, get_base_path
 
-torch.multiprocessing.freeze_support()
-
 
 if __name__ == "__main__":
 
@@ -20,7 +18,6 @@ if __name__ == "__main__":
     ]
 
     for index, (song, artist, language) in enumerate(songs):
-        print(language)
         lyrics = LyricsTranslator(song, artist, language, testing=True)
         lyrics.get_song_translations()
         lyrics.save(folder)
