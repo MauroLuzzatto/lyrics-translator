@@ -1,6 +1,5 @@
 import warnings
 from pathlib import Path
-from typing import List, Tuple
 
 import lyricsgenius
 from docx import Document
@@ -18,7 +17,7 @@ class LyricsTranslator(object):
         self,
         song: str,
         artist: str,
-        language: str = "de",
+        language: str,
         origin_language="en",
         testing: bool = False,
     ):
@@ -50,9 +49,12 @@ class LyricsTranslator(object):
             str: _description_
         """
         try:
-            genius_song = genius.search_song(
-                self.song, self.artist, get_full_info=get_full_info
-            )
+            if self.testing:
+                genius_song = None
+            else:
+                genius_song = genius.search_song(
+                    self.song, self.artist, get_full_info=get_full_info
+                )
         except KeyError:
             pass
 
@@ -75,22 +77,6 @@ class LyricsTranslator(object):
         else:
             self.translation = self.translator.translate(self.text)
 
-    def _get_header(self) -> str:
-        """_summary_
-
-        Returns:
-            str: _description_
-        """
-        return f"{self.song} - {self.artist} in {self.language}"
-
-    def _get_name(self) -> str:
-        """_summary_
-
-        Returns:
-            str: _description_
-        """
-        return f"{self.language}__{self.song}__{self.artist}".replace(" ", "_").lower()
-
     def save(self, folder: Path, kind: str = "txt") -> None:
         """_summary_
 
@@ -98,7 +84,12 @@ class LyricsTranslator(object):
             folder (Path): _description_
             kind (str, optional): _description_. Defaults to "txt".
         """
-        saver = Saver(self.song, self.artist, self.translation, self.language)
+        saver = Saver(
+            song=self.song,
+            artist=self.artist,
+            translation=self.translation,
+            language=self.language,
+        )
         saver.save(folder=folder, kind=kind)
 
     def __str__(self) -> str:

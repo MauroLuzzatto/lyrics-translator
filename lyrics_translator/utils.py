@@ -23,6 +23,12 @@ def read_json(file_path):
         return json.load(f)
 
 
+def read_songs(folder: Path, file: str = "songs.txt"):
+    with open(Path(folder / file), encoding="utf-8") as f:
+        songs = f.read()
+    return [song.split(",") for song in songs.split("\n")]
+
+
 class MockGeniusSong:
     def __init__(self, lyrics):
         self.lyrics = lyrics
