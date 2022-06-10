@@ -2,7 +2,7 @@ from pathlib import Path
 
 import torch
 
-from lyrics_translator import SongTranslator
+from lyrics_translator import LyricsTranslator
 from lyrics_translator.utils import create_folder, get_base_path
 
 torch.multiprocessing.freeze_support()
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     ]
 
     for index, (song, artist, language) in enumerate(songs):
-        song_instance = SongTranslator(song, artist, language)
-        song_instance.get_song_translations()
-        song_instance.save(save_folder)
-        print(index, song_instance)
+        lyrics = LyricsTranslator(song, artist, language, testing=True)
+        lyrics.get_song_translations()
+        lyrics.save(save_folder)
+        print(index, lyrics)

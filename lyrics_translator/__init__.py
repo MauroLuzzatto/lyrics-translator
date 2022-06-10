@@ -1,1 +1,1 @@
-from lyrics_translator.song_translator import SongTranslator
+from lyrics_translator.lyrics_translator import LyricsTranslator

@@ -8,8 +8,9 @@ cache = {}
 
 
 class Translator(object):
-    def __init__(self, language: str):
+    def __init__(self, language: str, origin_language: str = "en"):
         self.language = language
+        self.origin_language = origin_language
 
     def get_translator_pipeline(self) -> None:
         """[summary]
@@ -24,27 +25,31 @@ class Translator(object):
             pipeline: [description]
         """
 
-        if self.language == "de":
+        if self.language == "de" and self.origin_language == "en":
             model_name = "t5-large"
         elif self.language in ["fr", "sv"]:
-            model_name = f"Helsinki-NLP/opus-mt-en-{self.language}"
+            model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
         else:
-            raise ValueError(f'"{self.language}" is not supported!')
-
-        print(
-            f"Setup translator_pipeline for language {self.language}, using {model_name}!"
-        )
+            print("trying to find a model....")
+            model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
 
         if model_name in cache:
             self.translator = cache[model_name]
         else:
-
-            tokenizer = AutoTokenizer.from_pretrained(model_name)
+            try:
+                tokenizer = AutoTokenizer.from_pretrained(model_name)
+            except OSError as err:
+                message = f'{err} -- language "{self.language}" is not supported!'
+                raise ValueError(message)
             model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
             self.translator = pipeline(
                 f"translation_en_to_{self.language}", model=model, tokenizer=tokenizer
             )
             cache[model_name] = self.translator
+
+        print(
+            f'Setup translator_pipeline to translate from "{self.origin_language}" to "{self.language}" using {model_name}!'
+        )
 
     def translate(self, text: str, full: bool = True) -> str:
         """[summary]
@@ -60,15 +65,14 @@ class Translator(object):
         max_lines = 20
         list_of_text = text.strip().split("\n")
         number_of_lines = len(list_of_text)
-        # text = text.strip().split("\n")[:max_lines]
 
         if full:
-            numbers = int(number_of_lines / max_lines) + 1
+            numbers_of_paragraphs = int(number_of_lines / max_lines) + 1
         else:
-            numbers = 1
+            numbers_of_paragraphs = 1
 
         output = []
-        for number in range(numbers):
+        for number in range(numbers_of_paragraphs):
             start = number * max_lines
             end = min((number + 1) * max_lines, number_of_lines)
             print(start, end, number_of_lines)
@@ -77,6 +81,10 @@ class Translator(object):
                 [output_text["translation_text"] for output_text in translation]
             )
         return "\n".join(output)
+
+    def load_config():
+        """to be implemented"""
+        pass
 
 
 if __name__ == "__main__":
