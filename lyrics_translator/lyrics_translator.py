@@ -7,12 +7,13 @@ from lyrics_translator.saver import Saver
 from lyrics_translator.translator import Translator
 from lyrics_translator.utils import MockGeniusSong
 
+
 class LyricsTranslator(object):
     def __init__(
         self,
         song: str,
         artist: str,
-        config:dict,
+        config: dict,
         language: str,
         origin_language="en",
         testing: bool = False,
@@ -20,11 +21,11 @@ class LyricsTranslator(object):
         self.song = song
         self.artist = artist
         self.config = config
-        
+
         self.language = language
         self.origin_language = origin_language
         self.testing = testing
-        
+
         self.text = None
         self.translation = None
 
@@ -102,4 +103,3 @@ class LyricsTranslator(object):
 
     def __repr__(self) -> str:
         return f"LyricsTranslator(song={self.song}, artist={self.artist}, language={self.language}, origin_language={self.origin_language}, testing={self.testing})"
-

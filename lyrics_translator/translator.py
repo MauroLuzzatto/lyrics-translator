@@ -37,7 +37,9 @@ class Translator(object):
             self.translator = cache[model_name]
         else:
             try:
-                tokenizer = AutoTokenizer.from_pretrained(model_name, model_max_length=512)
+                tokenizer = AutoTokenizer.from_pretrained(
+                    model_name, model_max_length=512
+                )
             except OSError as err:
                 message = f'{err} -- language "{self.language}" is not supported!'
                 raise ValueError(message)

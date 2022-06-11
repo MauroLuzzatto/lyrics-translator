@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from dotenv import dotenv_values
 
 from lyrics_translator import LyricsTranslator, create_folder, get_base_path
