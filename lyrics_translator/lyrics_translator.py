@@ -2,30 +2,29 @@ import warnings
 from pathlib import Path
 
 import lyricsgenius
-from docx import Document
-from dotenv import dotenv_values
 
-from lyrics_translator.translator import Translator
 from lyrics_translator.saver import Saver
-
-config = dotenv_values(".env")
-genius = lyricsgenius.Genius(config["GENIUS_ACCESS_TOKEN"])
-
+from lyrics_translator.translator import Translator
+from lyrics_translator.utils import MockGeniusSong
 
 class LyricsTranslator(object):
     def __init__(
         self,
         song: str,
         artist: str,
+        config:dict,
         language: str,
         origin_language="en",
         testing: bool = False,
     ):
         self.song = song
         self.artist = artist
+        self.config = config
+        
         self.language = language
         self.origin_language = origin_language
         self.testing = testing
+        
         self.text = None
         self.translation = None
 
@@ -34,7 +33,7 @@ class LyricsTranslator(object):
         )
         self.translator.get_translator_pipeline()
 
-    def get_song_translations(self) -> None:
+    def get_song_translation(self) -> None:
         """download the song lyrics from the API and translate the lyrics"""
         self.download_lyrics()
         self.translate()
@@ -50,8 +49,9 @@ class LyricsTranslator(object):
         """
         try:
             if self.testing:
-                genius_song = None
+                genius_song = MockGeniusSong(lyrics="test text")
             else:
+                genius = lyricsgenius.Genius(self.config["GENIUS_ACCESS_TOKEN"])
                 genius_song = genius.search_song(
                     self.song, self.artist, get_full_info=get_full_info
                 )
@@ -60,10 +60,8 @@ class LyricsTranslator(object):
 
         if not genius_song:
             message = f"not found - song: {self.song}, artist: {self.artist}"
-            warnings.warn(message)
-            self.text = ""
-        else:
-            self.text = genius_song.lyrics
+            raise ValueError(message)
+        self.text = genius_song.lyrics
         return self.text
 
     def translate(self) -> str:
@@ -73,7 +71,7 @@ class LyricsTranslator(object):
             str: _description_
         """
         if self.testing:
-            self.translation = "some test text"
+            self.translation = "test translation"
         else:
             self.translation = self.translator.translate(self.text)
 
@@ -101,3 +99,7 @@ class LyricsTranslator(object):
         seperator = "----" * 10
         string = [self.text, seperator, self.translation]
         return "\n".join(string)
+
+    def __repr__(self) -> str:
+        return f"LyricsTranslator(song={self.song}, artist={self.artist}, language={self.language}, origin_language={self.origin_language}, testing={self.testing})"
+

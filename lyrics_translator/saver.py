@@ -4,13 +4,7 @@ from docx import Document
 
 
 class Saver(object):
-    def __init__(
-        self,
-        song: str,
-        artist: str,
-        translation: str,
-        language: str,
-    ):
+    def __init__(self, song: str, artist: str, translation: str, language: str):
         self.song = song
         self.artist = artist
         self.translation = translation
