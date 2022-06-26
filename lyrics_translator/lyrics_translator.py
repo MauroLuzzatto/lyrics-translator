@@ -52,7 +52,9 @@ class LyricsTranslator(object):
             if self.testing:
                 genius_song = MockGeniusSong(lyrics="test text")
             else:
-                genius = lyricsgenius.Genius(self.config["GENIUS_ACCESS_TOKEN"])
+                genius = lyricsgenius.Genius(
+                    self.config["GENIUS_ACCESS_TOKEN"], timeout=10, retries=3
+                )
                 genius_song = genius.search_song(
                     self.song, self.artist, get_full_info=get_full_info
                 )

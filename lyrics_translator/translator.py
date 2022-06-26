@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 
@@ -12,6 +14,7 @@ class Translator(object):
         self.language = language
         self.origin_language = origin_language
 
+    @lru_cache(maxsize=5)
     def get_translator_pipeline(self) -> None:
         """[summary]
 
