@@ -1,8 +1,0 @@
-lyricsgenius
-python-docx
-dotenv
-python-dotenv
-transformers[torch]
-sentencepiece
-sacremoses
-click

@@ -7,3 +7,7 @@ app/
 Dockerfile
 lyrics/*
 commands.txt
+prepare_game.py
+requirements.txt
+resources
+Makefile
