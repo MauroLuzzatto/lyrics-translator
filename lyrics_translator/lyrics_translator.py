@@ -7,6 +7,8 @@ from lyrics_translator.saver import Saver
 from lyrics_translator.translator import Translator
 from lyrics_translator.utils import MockGeniusSong
 
+MANDATORY_ENV_VARS = ["GENIUS_ACCESS_TOKEN"]
+
 
 class LyricsTranslator(object):
     def __init__(
@@ -18,8 +20,24 @@ class LyricsTranslator(object):
         origin_language="en",
         testing: bool = False,
     ):
+        """_summary_
+
+        Args:
+            song (str): _description_
+            artist (str): _description_
+            config (dict): _description_
+            language (str): _description_
+            origin_language (str, optional): _description_. Defaults to "en".
+            testing (bool, optional): _description_. Defaults to False.
+        """
         self.song = song
         self.artist = artist
+
+        for env_var in MANDATORY_ENV_VARS:
+            if env_var not in config:
+                message = f"Failed because the envrionment variable '{env_var}' is not set. Add '{env_var}' to the '.env' file and try it again!"
+                raise EnvironmentError(message)
+
         self.config = config
 
         self.language = language
@@ -99,9 +117,7 @@ class LyricsTranslator(object):
         Returns:
             str: _description_
         """
-        seperator = "----" * 10
-        string = [self.text, seperator, self.translation]
-        return "\n".join(string)
+        return self.translation
 
     def __repr__(self) -> str:
         return f"LyricsTranslator(song={self.song}, artist={self.artist}, language={self.language}, origin_language={self.origin_language}, testing={self.testing})"

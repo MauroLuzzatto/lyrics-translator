@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "lyrics-translator"
+version = "0.1.0"
+description = "Automated lyrics translation"
+authors = ["Mauro Luzzatto <mauroluzzatto@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/MauroLuzzatto/lyrics-translator"
+repository = "https://github.com/MauroLuzzatto/lyrics-translator"
+keywords = ["lyrics", "translation"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+lyricsgenius = "^3.0.1"
+python-docx = "^0.8.11"
+python-dotenv = "^0.20.0"
+transformers = {extras = ["torch"], version = "^4.20.1"}
+sentencepiece = "^0.1.96"
+sacremoses = "^0.0.53"
+click = "^8.1.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+lyrics-translator = "lyrics_translator.console:main"
