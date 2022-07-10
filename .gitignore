@@ -6,3 +6,4 @@ app
 app/
 Dockerfile
 lyrics/*
+commands.txt
