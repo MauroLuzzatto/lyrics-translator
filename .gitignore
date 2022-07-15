@@ -12,6 +12,9 @@ prepare_game.py
 requirements.txt
 resources
 Makefile
+lyrics_translator/spotify_api.py
+
+
 .mypy_cache/
 /.coverage
 /.coverage.*

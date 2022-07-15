@@ -53,7 +53,8 @@ class Translator(object):
             cache[model_name] = self.translator
 
         print(
-            f'Setup translator_pipeline to translate from "{self.origin_language}" to "{self.language}" using {model_name}!'
+            f'Setup translator_pipeline to translate from "{self.origin_language}" to'
+            f' "{self.language}" using {model_name}!'
         )
 
     def translate(self, text: str, full: bool = True) -> str:

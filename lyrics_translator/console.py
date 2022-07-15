@@ -21,7 +21,10 @@ from . import __version__
 @click.option(
     "--testing",
     default=False,
-    help='Mode of developement, if testing is set to "True" no data is fetched from the API and the translation is not run.',
+    help=(
+        'Mode of developement, if testing is set to "True" no data is fetched from the'
+        " API and the translation is not run."
+    ),
 )
 @click.version_option(version=__version__)
 def main(song, artist, language, testing):
