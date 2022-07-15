@@ -21,7 +21,7 @@ To use the `Lyrics Translator` you will have to create an API token from `genius
 
 add the API token to the `.env` file:
 ```txt
-GENIUS_ACCESS_TOKEN=M8Mx-chHJKKUEJLSOEI893793KJQu3_
+GENIUS_ACCESS_TOKEN=<replace-me-with-your-genius-api-token>
 ```
 
 
