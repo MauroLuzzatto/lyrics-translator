@@ -3,6 +3,9 @@ from typing import Optional
 
 import lyricsgenius
 
+from dotenv import dotenv_values
+
+
 from lyrics_translator.saver import Saver
 from lyrics_translator.translator import Translator
 from lyrics_translator.utils import MockGeniusSong
@@ -15,8 +18,8 @@ class LyricsTranslator(object):
         self,
         song: str,
         artist: str,
-        config: dict,
         language: str,
+        config: dict = None,
         origin_language="en",
         testing: bool = False,
     ):
@@ -45,7 +48,10 @@ class LyricsTranslator(object):
                 )
                 raise EnvironmentError(message)
 
-        self.config = config
+        if config is None:
+            self.config = dotenv_values(".env")
+        else:
+            self.config = config
 
         self.language = language
         self.origin_language = origin_language

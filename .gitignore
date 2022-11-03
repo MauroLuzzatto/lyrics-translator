@@ -13,6 +13,7 @@ requirements.txt
 resources
 Makefile
 lyrics_translator/spotify_api.py
+TODO.md
 
 
 .mypy_cache/
