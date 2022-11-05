@@ -1,6 +1,7 @@
 from functools import lru_cache
 
 import torch
+from tqdm import tqdm
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 
 torch.multiprocessing.freeze_support()
@@ -18,14 +19,10 @@ class Translator(object):
     def get_translator_pipeline(self) -> None:
         """[summary]
 
-        Args:
-            language (str): [description]
 
         Raises:
             ValueError: [description]
 
-        Returns:
-            pipeline: [description]
         """
 
         if self.language == "de" and self.origin_language == "en":
@@ -46,9 +43,9 @@ class Translator(object):
             except OSError as err:
                 message = f'{err} -- language "{self.language}" is not supported!'
                 raise ValueError(message)
-            
+
             model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
-            
+
             self.translator = pipeline(
                 f"translation_en_to_{self.language}", model=model, tokenizer=tokenizer
             )
@@ -81,29 +78,17 @@ class Translator(object):
 
         output = []
 
-        from tqdm import tqdm
-
-
         for paragraph in tqdm(range(numbers_of_paragraphs)):
             start = paragraph * batch_size
             end = min((paragraph + 1) * batch_size, number_of_lines)
-            
-            print(
-                f"Translation line {start} to {end} out of {number_of_lines}, "
-                f"paragraph: {paragraph+1}/{numbers_of_paragraphs}"
-                )
-            
-            print(list_of_text[start:end])
 
+            print(f"Translation line {start} to {end} out of {number_of_lines}")
 
-            translation = self.translator(
-                list_of_text[start:end]
+            translation = self.translator(list_of_text[start:end])
+
+            output.extend(
+                [output_text["translation_text"] for output_text in translation]
             )
-            
-            print([output_text["translation_text"] for output_text in translation])
-            # output.extend(
-            #     [output_text["translation_text"] for output_text in translation]
-            # )
         return "\n".join(output)
 
     def load_config():

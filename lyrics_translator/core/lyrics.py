@@ -1,21 +1,21 @@
-from lyrics_translator.core.utils import MockGeniusSong
-from typing import Optional
 from pathlib import Path
+from typing import Optional
+
 from lyrics_translator.core.saver import Saver
+from lyrics_translator.core.utils import MockGeniusSong
 
 
 class Lyrics(object):
-    def __init__(self, song, artist, testing=None):
+    def __init__(self, song:str, artist:str, testing:bool=None) -> None:
         self.song = song
         self.artist = artist
-
         self.testing = testing
 
-        self.text = None
-        self.translation = None
-        self.langauge = None
+        self.text: str = None
+        self.translation:str = None
+        self.language:str = None
 
-    def download_lyrics(self, genius, get_full_info: Optional[bool] = False) -> str:
+    def download_lyrics(self, genius, get_full_info: Optional[bool] = False) -> None:
         """Download the lyrics of the song using the `genius` API.
 
         Args:
@@ -37,7 +37,7 @@ class Lyrics(object):
 
         self.text = genius_song.lyrics
 
-    def translate(self, translator, language, short=False):
+    def translate(self, translator, language:str, short:bool=False) -> None:
         """Translate the lyrics into the target language.
 
         Returns:
@@ -50,15 +50,15 @@ class Lyrics(object):
         else:
             self.translation = translator.translate(self.text, short)
 
-    def get_translation(self, translator, language):
+    def get_translation(self, translator, language) -> str:
         self.translate(translator, language)
         return self.translation
 
-    def get_lyrics(self, genius):
+    def get_lyrics(self, genius) -> str:
         self.download_lyrics(genius)
         return self.lyrics
 
-    def save(self, folder: Path=None, kind: str = "txt") -> None:
+    def save(self, folder: Path = None, kind: str = "txt") -> None:
         """Save the translated lyrics to a file.
 
         Args:
@@ -78,7 +78,7 @@ class Lyrics(object):
         saver.save(folder=folder, kind=kind)
 
     def __str__(self) -> str:
-        """string version of the LyricsTranslator instance, returns the translated lyrics
+        """string version of the Lyrics instance, returns the translated lyrics
 
         Returns:
             str: _description_
@@ -86,9 +86,9 @@ class Lyrics(object):
         return self.translation
 
     def __repr__(self) -> str:
-        """LyricsTranslator representation
+        """Lyrics representation
 
         Returns:
             str: returns the string to create the same instance
         """
-        return f"Lyrics(" f" song={self.song}, artist={self.artist},"
+        return f"Lyrics(song={self.song}, artist={self.artist})"

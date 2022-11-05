@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 from lyrics_translator import LyricsTranslator, create_folder, get_base_path
 
 if __name__ == "__main__":
@@ -15,7 +14,7 @@ if __name__ == "__main__":
     ]
 
     for index, (song, artist, language) in enumerate(songs):
-        lyrics = LyricsTranslator(song, artist, language, testing=False)
-        lyrics.get_song_translation()
-        lyrics.save(folder)
+        translator = LyricsTranslator(language)
+        lyrics = translator.get_song_translation(song, artist)
         print(index, lyrics)
+        lyrics.save(folder)
