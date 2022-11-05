@@ -9,7 +9,6 @@ if __name__ == "__main__":
     resources_path = Path(base_path / "resources")
     folder = create_folder(Path(base_path / "lyrics"))
 
-
     songs = [
         ("Surfin' U.S.A.", "The Beach Boys", "de"),
         ("Surfin' U.S.A.", "The Beach Boys", "sv"),
