@@ -16,14 +16,11 @@ pip install lyrics-translator
 ```
 
 ## Setup
-To use the `LyricsTranslator` you will have to create an API token from `genius`: https://docs.genius.com/#/getting-started-h1
+To use the `LyricsTranslator` you will have to [get an API token](https://docs.genius.com/#/getting-started-h1) from `genius` add the API token to the `.env` file:
 
-
-add the API token to the `.env` file:
 ```txt
 GENIUS_ACCESS_TOKEN=<replace-me-with-your-genius-api-token>
 ```
-
 
 ## Usage
 <!--
