@@ -803,7 +803,7 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "018672ca2c6661167358554c0fa6fb63fe7925f07b543c19e72cb4de3329e399"
+content-hash = "8ab8d7fcf401f2b795ea8d3b44a0a67cdb6acaedcd1e164a4dc09ed2d811f0a5"
 
 [metadata.files]
 attrs = [
