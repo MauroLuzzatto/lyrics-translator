@@ -7,7 +7,7 @@ if __name__ == "__main__":
     language = "de"
 
     translator = LyricsTranslator(language)
-    lyrics = translator.get_song_translation(song, artist, short=False)
+    lyrics = translator.get_song_translation(song, artist)
     print(lyrics)
 
     lyrics.save()

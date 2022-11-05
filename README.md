@@ -6,7 +6,7 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 
-The `Lyrics Translator` downloads lyrics from genius and uses hugging face to translate the English lyrics into a target language.
+The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://genius.com/) to translate the lyrics into a target language.
 
 
 ## Install
@@ -16,7 +16,7 @@ pip install lyrics-translator
 ```
 
 ## Setup
-To use the `Lyrics Translator` you will have to create an API token from `genius`: https://docs.genius.com/#/getting-started-h1
+To use the `LyricsTranslator` you will have to create an API token from `genius`: https://docs.genius.com/#/getting-started-h1
 
 
 add the API token to the `.env` file:
@@ -33,17 +33,14 @@ GENIUS_ACCESS_TOKEN=<replace-me-with-your-genius-api-token>
 
 
 ```python
-from dotenv import dotenv_values
 from lyrics_translator import LyricsTranslator
-
-config = dotenv_values(".env")
 
 song = "Surfin' U.S.A."
 artist = "The Beach Boys"
 language = "de"
 
-lyrics = LyricsTranslator(song, artist, config, language)
-lyrics.get_song_translation()
+translator = LyricsTranslator(language)
+lyrics = translator.get_song_translation(song, artist)
 print(lyrics)
 ```
 Output:
@@ -111,8 +108,9 @@ Surfin' U.S.A
 Jeder ist surfin'
 Surfin' U.S.A
 
-Yeah everybody's gone surfing
+Jeder ist surfin'
 Surfin' U.S.A
 
-Yeah everybody's gone surfing
+Jeder ist surfin'
+Surfin' U.S.A
 ```
