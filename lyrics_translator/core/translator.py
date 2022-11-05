@@ -71,7 +71,7 @@ class Translator(object):
         """
         print("Song is being translated, this can take a while...")
         batch_size = 20
-        list_of_text = text.strip().split("\n")
+        list_of_text = [entry.strip() for entry in text.strip().split("\n")]
         number_of_lines = len(list_of_text)
 
         if short:
@@ -94,8 +94,11 @@ class Translator(object):
                 )
             
             print(list_of_text[start:end])
+
+
             translation = self.translator(
-                list_of_text[start:end])
+                list_of_text[start:end]
+            )
             
             print([output_text["translation_text"] for output_text in translation])
             # output.extend(
