@@ -14,7 +14,7 @@ resources
 Makefile
 lyrics_translator/spotify_api.py
 TODO.md
-
+poetry.lock
 
 .mypy_cache/
 /.coverage
@@ -28,5 +28,5 @@ TODO.md
 __pycache__/
 
 
-static/HatchfulExport-All(5)
-static/HatchfulExport-All(5).zip
+static
+site

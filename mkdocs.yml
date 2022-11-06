@@ -1,0 +1,61 @@
+site_name: 🎵 LyricsTranslator
+site_url: https://MauroLuzzatto.github.io/lyrics-translator/
+
+theme:
+  name: material
+  palette:
+  - scheme: default
+    primary: deep purple
+    accent: indigo
+    toggle:
+      icon: material/lightbulb
+      name: Switch to dark mode
+  - scheme: slate
+    primary: deep purple
+    accent: indigo
+    toggle:
+      icon: material/lightbulb-outline
+      name: Switch to light mode
+  features:
+  - search.suggest
+  - search.highlight
+  - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github-alt
+  favicon: img/favicon.png
+  language: en
+repo_name:  MauroLuzzatto/lyrics-translator
+repo_url: https://github.com/MauroLuzzatto/lyrics-translator
+edit_uri: ''
+nav:
+  - LyricsTranslator: index.md
+  - Tutorial - User Guide:
+    - tutorial/index.md
+  - help.md
+
+markdown_extensions:
+- toc:
+    permalink: true
+- markdown.extensions.codehilite:
+    guess_lang: false
+- admonition
+- codehilite
+- extra
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format ''
+- pymdownx.tabbed:
+    alternate_style: true
+- mdx_include
+
+extra:
+  analytics:
+    provider: google
+    property: UA-216293837-1
+  social:
+  - icon: fontawesome/brands/github-alt
+    link: https://github.com/MauroLuzzatto/lyrics-translator
+  - icon: fontawesome/solid/globe
+    link: https://maurol.com
