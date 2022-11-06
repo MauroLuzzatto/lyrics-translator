@@ -5,10 +5,36 @@
 
 <h2 align="center">🎵 LyricsTranslator - automated lyrics translation</h2>
 
-[![pypi version](https://img.shields.io/pypi/v/lyrics-translator.svg)](https://pypi.python.org/pypi/lyrics-translator)
-[![Supported versions](https://img.shields.io/pypi/pyversions/lyrics-translator.svg)](https://pypi.org/project/lyrics-translator)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+
+
+<p align="center">
+
+<a href="https://pypi.python.org/pypi/lyrics-translator" target="_blank">
+    <img src="https://img.shields.io/pypi/v/lyrics-translator.svg" alt="pypi version">
+</a>
+
+<a href="https://pypi.org/project/lyrics-translator" target="_blank">
+    <img src="https://img.shields.io/pypi/pyversions/lyrics-translator.svg" alt="Supported versions">
+</a>
+
+<a href="https://github.com/ambv/black" target="_blank">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square" alt="Code style: black">
+
+<a href="https://pycqa.github.io/isort/" target="_blank">
+    <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336" alt="Imports: isort">
+
+
+</p>
+
+
+
+---
+
+**Documentation**: <a href="https://mauroluzzatto.github.io/lyrics-translator" target="_blank">https://mauroluzzatto.github.io/lyrics-translator</a>
+
+**Source Code**: <a href="https://github.com/MauroLuzzatto/lyrics-translator" target="_blank">https://github.com/MauroLuzzatto/lyrics-translator</a>
+
+---
 
 
 The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://genius.com/) to translate the lyrics into a target language.
@@ -16,17 +42,9 @@ The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and u
 
 ## Install
 
-
-<div class="termy">
-
-```console
-$ pip install lyrics-translator
----> 100%
-Successfully installed lyrics-translator
 ```
-
-</div>
-
+pip install lyrics-translator
+```
 
 ## Setup
 To use the `LyricsTranslator` you will have to [get an API token](https://docs.genius.com/#/getting-started-h1) from `genius` add the API token to the `.env` file:
