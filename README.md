@@ -1,5 +1,13 @@
 # Lyrics Translator
 
+<p align="center">
+<img src="https://github.com/MauroLuzzatto/lyrics-translator/raw/main/static/logo.png" width="200" height="200"/>
+</p>
+<!-- # explainy - machine learning model explanations for humans -->
+<!-- # explainy - black-box model explanations for humans -->
+
+<h1 align="center">automated lyrics translation</h1>
+
 [![pypi version](https://img.shields.io/pypi/v/lyrics-translator.svg)](https://pypi.python.org/pypi/lyrics-translator)
 [![Supported versions](https://img.shields.io/pypi/pyversions/lyrics-translator.svg)](https://pypi.org/project/lyrics-translator)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
