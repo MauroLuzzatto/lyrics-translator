@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://github.com/MauroLuzzatto/lyrics-translator/raw/main/static/logo.png" width="200" height="200"/>
+<img src="https://github.com/MauroLuzzatto/lyrics-translator/raw/main/static/logo.jpeg" width="200" height="200"/>
 </p>
 
 <h2 align="center">automated lyrics translation</h2>
