@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://example.com/">
+        <link rel="canonical" href="https://MauroLuzzatto.github.io/lyrics-translator/">
       
       <link rel="icon" href="img/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
@@ -431,26 +431,38 @@
   <h1>LyricsTranslator</h1>
 
 <p align="center">
-<img src="https://github.com/MauroLuzzatto/lyrics-translator/raw/main/static/logo.jpg" width="200" height="200"/>
+<img src="https://github.com/MauroLuzzatto/lyrics-translator/blob/main/docs/img/logo.jpg" width="200" height="200"/>
 </p>
 
-<h2 align="center">🎵 automated lyrics translation 🎵</h2>
+<h2 align="center">🎵 LyricsTranslator - automated lyrics translation</h2>
 
-<p><a href="https://pypi.python.org/pypi/lyrics-translator"><img alt="pypi version" src="https://img.shields.io/pypi/v/lyrics-translator.svg" /></a>
-<a href="https://pypi.org/project/lyrics-translator"><img alt="Supported versions" src="https://img.shields.io/pypi/pyversions/lyrics-translator.svg" /></a>
-<a href="https://github.com/ambv/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square" /></a>
-<a href="https://pycqa.github.io/isort/"><img alt="Imports: isort" src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&amp;labelColor=ef8336" /></a></p>
+<p align="center">
+
+<a href="https://pypi.python.org/pypi/lyrics-translator" target="_blank">
+    <img src="https://img.shields.io/pypi/v/lyrics-translator.svg" alt="pypi version">
+</a>
+
+<a href="https://pypi.org/project/lyrics-translator" target="_blank">
+    <img src="https://img.shields.io/pypi/pyversions/lyrics-translator.svg" alt="Supported versions">
+</a>
+
+<a href="https://github.com/ambv/black" target="_blank">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square" alt="Code style: black">
+
+<a href="https://pycqa.github.io/isort/" target="_blank">
+    <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336" alt="Imports: isort">
+
+
+</p>
+
+<hr />
+<p><strong>Documentation</strong>: <a href="https://mauroluzzatto.github.io/lyrics-translator" target="_blank">https://mauroluzzatto.github.io/lyrics-translator</a></p>
+<p><strong>Source Code</strong>: <a href="https://github.com/MauroLuzzatto/lyrics-translator" target="_blank">https://github.com/MauroLuzzatto/lyrics-translator</a></p>
+<hr />
 <p>The <code>LyricsTranslator</code> downloads lyrics from <a href="https://genius.com/">genius</a> and uses 🤗<a href="https://genius.com/">hugging face</a> to translate the lyrics into a target language.</p>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install lyrics-translator
-<span class="go">---&gt; 100%</span>
-<span class="go">Successfully installed lyrics-translator</span>
+<div class="highlight"><pre><span></span><code>pip install lyrics-translator
 </code></pre></div>
-
-</div>
-
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <p>To use the <code>LyricsTranslator</code> you will have to <a href="https://docs.genius.com/#/getting-started-h1">get an API token</a> from <code>genius</code> add the API token to the <code>.env</code> file:</p>
 <div class="highlight"><pre><span></span><code>GENIUS_ACCESS_TOKEN=&lt;replace-me-with-your-genius-api-token&gt;
