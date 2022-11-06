@@ -7,17 +7,6 @@
 
 
 
-
-[![pypi version](https://img.shields.io/pypi/v/lyrics-translator.svg)](https://pypi.python.org/pypi/lyrics-translator)
-
-[![Supported versions](https://img.shields.io/pypi/pyversions/lyrics-translator.svg)](https://pypi.org/project/lyrics-translator)
-
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
-
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
-
-
-
 <p align="center">
 
 <a href="https://pypi.python.org/pypi/lyrics-translator" target="_blank">
@@ -31,6 +20,8 @@
 <a href="https://github.com/ambv/black" target="_blank">
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square" alt="Code style: black">
 
+<a href="https://pycqa.github.io/isort/" target="_blank">
+    <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336" alt="Imports: isort">
 
 
 </p>
@@ -39,9 +30,9 @@
 
 ---
 
-**Documentation**: <a href="https://asyncer.tiangolo.com" target="_blank">https://asyncer.tiangolo.com</a>
+**Documentation**: <a href="https://mauroluzzatto.github.io/lyrics-translator" target="_blank">https://mauroluzzatto.github.io/lyrics-translator</a>
 
-**Source Code**: <a href="https://github.com/tiangolo/asyncer" target="_blank">https://github.com/tiangolo/asyncer</a>
+**Source Code**: <a href="https://github.com/MauroLuzzatto/lyrics-translator" target="_blank">https://github.com/MauroLuzzatto/lyrics-translator</a>
 
 ---
 
