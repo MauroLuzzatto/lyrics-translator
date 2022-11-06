@@ -1,7 +1,7 @@
 
-<p align="center">
+<!-- <p align="center">
 <img src="https://github.com/MauroLuzzatto/lyrics-translator/blob/main/docs/img/logo.jpg" width="200" height="200"/>
-</p>
+</p> -->
 
 <h2 align="center">🎵 LyricsTranslator - automated lyrics translation</h2>
 
