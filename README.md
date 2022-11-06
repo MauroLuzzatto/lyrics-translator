@@ -1,14 +1,49 @@
 
 <p align="center">
-<img src="https://github.com/MauroLuzzatto/lyrics-translator/raw/main/static/logo.jpg" width="200" height="200"/>
+<img src="https://github.com/MauroLuzzatto/lyrics-translator/blob/main/docs/img/logo.jpg" width="200" height="200"/>
 </p>
 
-<h2 align="center">🎵 automated lyrics translation 🎵</h2>
+<h2 align="center">🎵 LyricsTranslator - automated lyrics translation</h2>
+
+
+
 
 [![pypi version](https://img.shields.io/pypi/v/lyrics-translator.svg)](https://pypi.python.org/pypi/lyrics-translator)
+
 [![Supported versions](https://img.shields.io/pypi/pyversions/lyrics-translator.svg)](https://pypi.org/project/lyrics-translator)
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
+
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+
+
+
+<p align="center">
+
+<a href="https://pypi.python.org/pypi/lyrics-translator" target="_blank">
+    <img src="https://img.shields.io/pypi/v/lyrics-translator.svg" alt="pypi version">
+</a>
+
+<a href="https://pypi.org/project/lyrics-translator" target="_blank">
+    <img src="https://img.shields.io/pypi/pyversions/lyrics-translator.svg" alt="Supported versions">
+</a>
+
+<a href="https://github.com/ambv/black" target="_blank">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square" alt="Code style: black">
+
+
+
+</p>
+
+
+
+---
+
+**Documentation**: <a href="https://asyncer.tiangolo.com" target="_blank">https://asyncer.tiangolo.com</a>
+
+**Source Code**: <a href="https://github.com/tiangolo/asyncer" target="_blank">https://github.com/tiangolo/asyncer</a>
+
+---
 
 
 The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://genius.com/) to translate the lyrics into a target language.
