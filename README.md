@@ -3,7 +3,7 @@
 <img src="https://github.com/MauroLuzzatto/lyrics-translator/raw/main/static/logo.jpg" width="200" height="200"/>
 </p>
 
-<h2 align="center">automated lyrics translation</h2>
+<h2 align="center">🎵 automated lyrics translation 🎵</h2>
 
 [![pypi version](https://img.shields.io/pypi/v/lyrics-translator.svg)](https://pypi.python.org/pypi/lyrics-translator)
 [![Supported versions](https://img.shields.io/pypi/pyversions/lyrics-translator.svg)](https://pypi.org/project/lyrics-translator)
