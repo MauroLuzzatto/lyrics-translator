@@ -15,6 +15,7 @@ Makefile
 lyrics_translator/spotify_api.py
 TODO.md
 poetry.lock
+main.py
 
 .mypy_cache/
 /.coverage
