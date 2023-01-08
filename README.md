@@ -30,9 +30,7 @@
 The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://huggingface.co/) to translate the lyrics into a target language.
 
 
-All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation.
-
-The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
+All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation. The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
 
 - German: `de`
 - Swedish: `sv`
