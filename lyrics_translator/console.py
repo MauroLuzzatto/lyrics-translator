@@ -1,7 +1,6 @@
 import textwrap
 
 import click
-from dotenv import dotenv_values
 
 from lyrics_translator import LyricsTranslator
 
@@ -24,9 +23,8 @@ from . import __version__
 @click.version_option(version=__version__)
 def main(song, artist, language, testing):
 
-    config = dotenv_values(".env")
-
-    lyrics = LyricsTranslator(song, artist, config, language, testing=testing)
+    translator = LyricsTranslator(language)
+    lyrics = translator.get_song_translation(song, artist, testing)
     lyrics.get_song_translation()
 
     title = f"'{song}' by '{artist}' translated into '{language}'"

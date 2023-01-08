@@ -6,14 +6,14 @@ from lyrics_translator.core.utils import MockGeniusSong
 
 
 class Lyrics(object):
-    def __init__(self, song:str, artist:str, testing:bool=None) -> None:
+    def __init__(self, song: str, artist: str, testing: bool = None) -> None:
         self.song = song
         self.artist = artist
         self.testing = testing
 
         self.text: str = None
-        self.translation:str = None
-        self.language:str = None
+        self.translation: str = None
+        self.language: str = None
 
     def download_lyrics(self, genius, get_full_info: Optional[bool] = False) -> None:
         """Download the lyrics of the song using the `genius` API.
@@ -37,7 +37,7 @@ class Lyrics(object):
 
         self.text = genius_song.lyrics
 
-    def translate(self, translator, language:str, short:bool=False) -> None:
+    def translate(self, translator, language: str) -> None:
         """Translate the lyrics into the target language.
 
         Returns:
@@ -48,7 +48,7 @@ class Lyrics(object):
         if self.testing:
             self.translation = "<test translation>"
         else:
-            self.translation = translator.translate(self.text, short)
+            self.translation = translator.translate(self.text)
 
     def get_translation(self, translator, language) -> str:
         self.translate(translator, language)
@@ -56,9 +56,9 @@ class Lyrics(object):
 
     def get_lyrics(self, genius) -> str:
         self.download_lyrics(genius)
-        return self.lyrics
+        return self.text
 
-    def save(self, folder: Path = None, kind: str = "txt") -> None:
+    def save(self, folder: str = "lyrics", kind: str = "txt") -> None:
         """Save the translated lyrics to a file.
 
         Args:
@@ -66,8 +66,11 @@ class Lyrics(object):
             kind (str, optional): _description_. Defaults to "txt".
         """
 
-        if folder is None:
-            folder = Path().resolve()
+        if not folder:
+            folder_path = Path().resolve()
+        else:
+            folder_path = Path(folder).resolve()
+            folder_path.mkdir(parents=True, exist_ok=True)
 
         saver = Saver(
             song=self.song,
@@ -75,7 +78,7 @@ class Lyrics(object):
             translation=self.translation,
             language=self.language,
         )
-        saver.save(folder=folder, kind=kind)
+        saver.save(folder=folder_path, kind=kind)
 
     def __str__(self) -> str:
         """string version of the Lyrics instance, returns the translated lyrics

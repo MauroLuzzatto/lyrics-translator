@@ -13,6 +13,8 @@ requirements.txt
 resources
 Makefile
 lyrics_translator/spotify_api.py
+lyrics_translator/model_Test.py
+
 TODO.md
 poetry.lock
 main.py

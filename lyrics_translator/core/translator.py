@@ -1,7 +1,6 @@
 from functools import lru_cache
 
 import torch
-from tqdm import tqdm
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 
 torch.multiprocessing.freeze_support()
@@ -19,18 +18,16 @@ class Translator(object):
     def get_translator_pipeline(self) -> None:
         """[summary]
 
-
         Raises:
             ValueError: [description]
 
         """
-
         if self.language == "de" and self.origin_language == "en":
-            model_name = "t5-large"
+            model_name = "t5-small"
         elif self.language in ["fr", "sv"]:
             model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
         else:
-            print("trying to find a model....")
+            print("trying to find the model....")
             model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
 
         if model_name in cache:
@@ -38,58 +35,49 @@ class Translator(object):
         else:
             try:
                 tokenizer = AutoTokenizer.from_pretrained(
-                    model_name, model_max_length=512
+                    model_name, model_max_length=512, skip_special_tokens=True
                 )
+                model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+
             except OSError as err:
                 message = f'{err} -- language "{self.language}" is not supported!'
                 raise ValueError(message)
 
-            model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
-
             self.translator = pipeline(
-                f"translation_en_to_{self.language}", model=model, tokenizer=tokenizer
+                f"translation_{self.origin_language}_to_{self.language}",
+                model=model,
+                tokenizer=tokenizer,
             )
             cache[model_name] = self.translator
 
         print(
             f'Setup translator_pipeline to translate from "{self.origin_language}" to'
-            f' "{self.language}" using {model_name}!'
+            f' "{self.language}" using "{model_name}"!'
         )
 
-    def translate(self, text: str, short: bool = False) -> str:
+    def translate(self, text: str) -> str:
         """[summary]
 
         Args:
             text (str): [description]
-            translator (pipeline): [description]
 
         Returns:
             str: [description]
         """
         print("Song is being translated, this can take a while...")
-        batch_size = 20
-        list_of_text = [entry.strip() for entry in text.strip().split("\n")]
-        number_of_lines = len(list_of_text)
 
-        if short:
-            numbers_of_paragraphs = 1
-        else:
-            numbers_of_paragraphs = int(number_of_lines / batch_size) + 1
+        skip_token = "_11111111_"
 
+        sentences = [
+            sentence.strip() if sentence.strip() != "" else skip_token
+            for sentence in text.strip().split("\n")
+        ]
         output = []
+        for translation in self.translator(sentences, batch_size=8):
+            output.append(translation["translation_text"])
 
-        for paragraph in tqdm(range(numbers_of_paragraphs)):
-            start = paragraph * batch_size
-            end = min((paragraph + 1) * batch_size, number_of_lines)
-
-            print(f"Translation line {start} to {end} out of {number_of_lines}")
-
-            translation = self.translator(list_of_text[start:end])
-
-            output.extend(
-                [output_text["translation_text"] for output_text in translation]
-            )
-        return "\n".join(output)
+        output_sentences = "\n".join(output)
+        return output_sentences.replace(skip_token, "\n")
 
     def load_config():
         """to be implemented"""
@@ -98,7 +86,7 @@ class Translator(object):
 
 if __name__ == "__main__":
 
-    language = "de"
+    language = "de"  # "de"
     short_text = "Hello my friends! How are you doing today?"
 
     long_text = """
@@ -109,8 +97,81 @@ if __name__ == "__main__":
         We then generate a translation for all the elements in the batch, decode the batch, and take the first element.
         Which is the translated text that we then print on screen.
     """
+
+    lyrics = """
+        Surfin’ USA Lyrics[Verse 1]
+        If everybody had an ocean
+        Across the U.S.A
+        Then everybody'd be surfin'
+        Like Californi-a
+        You'd see them wearing their baggies
+        Huarache sandals too
+        A bushy bushy blond hairdo
+        Surfin' U.S.A
+
+        [Chorus]
+        You'd catch 'em surfin' at Del Mar
+        (Inside, outside, U.S.A.)
+        Ventura County line
+        (Inside, outside, U.S.A.)
+        Santa Cruz and Trestles
+        (Inside, outside, U.S.A.)
+        Australia's Narrabeen
+        (Inside, outside, U.S.A.)
+        All over Manhattan
+        (Inside, outside, U.S.A.)
+        And down Doheny Way
+        (Inside, outside)
+        [Hook]
+        Everybody's gone surfin'
+        Surfin' U.S.A
+
+        [Verse 2]
+        We'll all be planning that route
+        We're gonna take real soon
+        We're waxing down our surfboards
+        We can't wait for June
+        We'll all be gone for the summer
+        We're on surfari to stay
+        Tell the teacher we're surfin'
+        Surfin' U.S.A
+
+        [Chorus]
+        Haggerties and Swamis
+        (Inside, outside, U.S.A.)
+        Pacific Palisades
+        (Inside, outside, U.S.A.)
+        San Onofre and Sunset
+        (Inside, outside, U.S.A.)
+        Redondo Beach LA
+        (Inside, outside, U.S.A.)
+        All over La Jolla
+        (Inside, outside, U.S.A.)
+        At Wa'imea Bay
+        (Inside, outside)
+        You might also like[Hook]
+        Everybody's gone surfin'
+        Surfin' U.S.A
+
+        [Instrumental Interlude]
+
+        [Outro]
+        Everybody's gone surfin'
+        Surfin' U.S.A
+
+        Everybody's gone surfin'
+        Surfin' U.S.A
+
+        Yeah everybody's gone surfin'
+        Surfin' U.S.A
+
+        Yeah everybody's gone surfin'
+        Surfin' U.S.A12Embed
+        """
     translator = Translator(language)
     translator.get_translator_pipeline()
-    translation = translator.translate(long_text)
+    # translation = translator.translate(long_text)
+    translation = translator.translate_fast(lyrics)
+
     print("----" * 10)
     print(translation)

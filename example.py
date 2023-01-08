@@ -4,10 +4,10 @@ if __name__ == "__main__":
 
     song = "Surfin' U.S.A."
     artist = "The Beach Boys"
-    language = "de"
 
-    translator = LyricsTranslator(language)
-    lyrics = translator.get_song_translation(song, artist)
-    print(lyrics)
+    for language in ["de", "sv"]:
 
-    lyrics.save()
+        translator = LyricsTranslator(language)
+        lyrics = translator.get_song_translation(song, artist)
+        lyrics.save()
+        print(lyrics)
