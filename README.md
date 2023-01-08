@@ -66,24 +66,12 @@ Check out this page for the list of all available translation langauges: https:/
 - Chinese: `zh`
 - Japanese: `ja`
 - Portuguese: `pt`
-- Russian
-- Arabic
-- Italian
-- Finnish
-- Hindi
-- Dutch
-- Vietnamese
-- Turkish
-- Korean
-- Indonesian
-- Ukrainian
-- Romanian
-- Polish
-- Persian
-- Catalan
-- Thai
-- Estonian
-- Danish
+- Arabic: `ar`
+- Italian: `it`
+- Finnish: `fi`
+- Hindi: `hi`
+- Dutch: `nl`
+- Danish: `da`
 
 and many more ...
 
