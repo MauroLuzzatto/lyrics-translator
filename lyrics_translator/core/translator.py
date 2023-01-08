@@ -24,8 +24,6 @@ class Translator(object):
         """
         if self.language == "de" and self.origin_language == "en":
             model_name = "t5-small"
-        elif self.language in ["fr", "sv"]:
-            model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
         else:
             print("trying to find the model....")
             model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"

@@ -53,6 +53,42 @@ To use the `LyricsTranslator` you will have to [get an API token](https://docs.g
 GENIUS_ACCESS_TOKEN=<replace-me-with-your-genius-api-token>
 ```
 
+## Supported Languages
+
+All languages supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) that are avaialable on 🤗[hugging face](https://genius.com/).
+
+Check out this page for the list of all available translation langauges: https://huggingface.co/models?other=marian
+
+- German: `de`
+- Swedish: `sv`
+- French: `fr`
+- Spanish: `es` 
+- Chinese: `zh`
+- Japanese: `ja`
+- Portuguese: `pt`
+- Russian
+- Arabic
+- Italian
+- Finnish
+- Hindi
+- Dutch
+- Vietnamese
+- Turkish
+- Korean
+- Indonesian
+- Ukrainian
+- Romanian
+- Polish
+- Persian
+- Catalan
+- Thai
+- Estonian
+- Danish
+
+and many more ...
+
+
+
 ## Usage
 <!--
 📚 A comprehensive example of the `explainy` API can be found in this ![Jupyter Notebook](https://github.com/MauroLuzzatto/explainy/blob/main/examples/01-explainy-intro.ipynb)
