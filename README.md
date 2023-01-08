@@ -37,7 +37,24 @@
 ---
 
 
-The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://genius.com/) to translate the lyrics into a target language.
+The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://huggingface.co/) to translate the lyrics into a target language.
+
+
+All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation.
+
+The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
+
+- German: `de`
+- Swedish: `sv`
+- French: `fr`
+- Spanish: `es` 
+- Chinese: `zh`
+- Japanese: `ja`
+- Portuguese: `pt`
+- Arabic: `ar`
+- Italian: `it`
+
+and many more ...
 
 
 ## Install
@@ -54,26 +71,6 @@ GENIUS_ACCESS_TOKEN=<replace-me-with-your-genius-api-token>
 ```
 
 ## Supported Languages
-
-All languages supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) that are avaialable on 🤗[hugging face](https://genius.com/).
-
-Check out this page for the list of all available translation langauges: https://huggingface.co/models?other=marian
-
-- German: `de`
-- Swedish: `sv`
-- French: `fr`
-- Spanish: `es` 
-- Chinese: `zh`
-- Japanese: `ja`
-- Portuguese: `pt`
-- Arabic: `ar`
-- Italian: `it`
-- Finnish: `fi`
-- Hindi: `hi`
-- Dutch: `nl`
-- Danish: `da`
-
-and many more ...
 
 
 
