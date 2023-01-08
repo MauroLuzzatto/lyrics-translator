@@ -26,6 +26,14 @@
 
 </p>
 
+---
+
+**Documentation**: <a href="https://mauroluzzatto.github.io/lyrics-translator" target="_blank">https://mauroluzzatto.github.io/lyrics-translator</a>
+
+**Source Code**: <a href="https://github.com/MauroLuzzatto/lyrics-translator" target="_blank">https://github.com/MauroLuzzatto/lyrics-translator</a>
+
+---
+
 
 The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://huggingface.co/) to translate the lyrics into a target language.
 
@@ -45,13 +53,7 @@ All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Op
 and many more ...
 
 
----
 
-**Documentation**: <a href="https://mauroluzzatto.github.io/lyrics-translator" target="_blank">https://mauroluzzatto.github.io/lyrics-translator</a>
-
-**Source Code**: <a href="https://github.com/MauroLuzzatto/lyrics-translator" target="_blank">https://github.com/MauroLuzzatto/lyrics-translator</a>
-
----
 
 
 ## Install
