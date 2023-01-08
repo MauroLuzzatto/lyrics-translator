@@ -30,7 +30,7 @@
 The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://huggingface.co/) to translate the lyrics into a target language.
 
 
-All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation. The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
+All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation.The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
 
 - German: `de`
 - Swedish: `sv`
@@ -47,13 +47,11 @@ and many more ...
 
 ---
 
-## Documentation: 
-
-<a href="https://mauroluzzatto.github.io/lyrics-translator" target="_blank">https://mauroluzzatto.github.io/lyrics-translator</a>
+**Documentation**: <a href="https://mauroluzzatto.github.io/lyrics-translator" target="_blank">https://mauroluzzatto.github.io/lyrics-translator</a>
 
 **Source Code**: <a href="https://github.com/MauroLuzzatto/lyrics-translator" target="_blank">https://github.com/MauroLuzzatto/lyrics-translator</a>
 
-
+---
 
 
 ## Install
