@@ -22,9 +22,8 @@
 
 <a href="https://pycqa.github.io/isort/" target="_blank">
     <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336" alt="Imports: isort">
-
-
 </p>
+
 
 ---
 
@@ -68,9 +67,6 @@ To use the `LyricsTranslator` you will have to [get an API token](https://docs.g
 ```txt
 GENIUS_ACCESS_TOKEN=<replace-me-with-your-genius-api-token>
 ```
-
-## Supported Languages
-
 
 
 ## Usage

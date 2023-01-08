@@ -3,7 +3,7 @@
 <img src="https://github.com/MauroLuzzatto/lyrics-translator/blob/main/docs/img/logo.jpg" width="200" height="200"/>
 </p> -->
 
-<h2 align="center">🎵 LyricsTranslator - automated lyrics translation</h2>
+<h1 align="center">🎵 LyricsTranslator - automated lyrics translation</h1>
 
 
 
@@ -22,10 +22,7 @@
 
 <a href="https://pycqa.github.io/isort/" target="_blank">
     <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336" alt="Imports: isort">
-
-
 </p>
-
 
 
 ---
@@ -37,7 +34,25 @@
 ---
 
 
-The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://genius.com/) to translate the lyrics into a target language.
+The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://huggingface.co/) to translate the lyrics into a target language.
+
+
+All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation.The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
+
+- German: `de`
+- Swedish: `sv`
+- French: `fr`
+- Spanish: `es` 
+- Chinese: `zh`
+- Japanese: `ja`
+- Portuguese: `pt`
+- Arabic: `ar`
+- Italian: `it`
+
+and many more ...
+
+
+
 
 
 ## Install
@@ -52,6 +67,7 @@ To use the `LyricsTranslator` you will have to [get an API token](https://docs.g
 ```txt
 GENIUS_ACCESS_TOKEN=<replace-me-with-your-genius-api-token>
 ```
+
 
 ## Usage
 <!--
