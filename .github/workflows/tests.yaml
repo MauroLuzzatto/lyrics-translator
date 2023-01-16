@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.8']
+        python-version: ['3.9']
     name: Python ${{ matrix.python-version }}
     steps:
     - uses: actions/checkout@v2
@@ -17,7 +17,5 @@ jobs:
     - run: pip install poetry==1.0.5
     - name: Install dependencies using Poetry
       run: poetry install --ansi
-      working-directory: lyrics-translator
     - name: Run tests
       run: poetry run pytest --cov
-      working-directory: lyrics-translator
