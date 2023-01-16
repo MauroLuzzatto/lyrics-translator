@@ -15,4 +15,9 @@ jobs:
         architecture: x64
     - run: pip install nox==2019.11.9
     - run: pip install poetry==1.0.5
-    - run: poetry run pytest --cov
+    - name: Install dependencies using Poetry
+      run: poetry install --ansi
+      working-directory: lyrics-translator
+    - name: Run tests
+      run: poetry run pytest --cov
+      working-directory: lyrics-translator
