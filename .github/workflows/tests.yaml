@@ -13,13 +13,13 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         architecture: x64
-    - name: 'Create env file'
-        run: |
-          touch .env
-          echo GENIUS_ACCESS_TOKEN=${{ secrets.GENIUS_ACCESS_TOKEN }} >> .env
-          cat .env
     - run: pip install nox==2019.11.9
     - run: pip install poetry==1.0.5
+    - name: Create env file
+      run: |
+        touch .env
+        echo GENIUS_ACCESS_TOKEN=${{ secrets.GENIUS_ACCESS_TOKEN }} >> .env
+        cat .env
     - name: Install dependencies using Poetry
       run: poetry install --ansi
     - name: Run tests
