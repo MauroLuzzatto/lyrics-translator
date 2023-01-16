@@ -24,6 +24,10 @@
     <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336" alt="Imports: isort">
 </p>
 
+<a href="https://github.com/MauroLuzzatto/lyrics-translator/actions?workflow=Tests" target="_blank">
+    <img src="https://github.com/MauroLuzzatto/lyrics-translator/workflows/Tests/badge.svg" alt="Tests">
+</p>
+
 
 ---
 

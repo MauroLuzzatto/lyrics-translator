@@ -25,8 +25,6 @@ def main(song, artist, language, testing):
 
     translator = LyricsTranslator(language)
     lyrics = translator.get_song_translation(song, artist, testing)
-    lyrics.get_song_translation()
-
     title = f"'{song}' by '{artist}' translated into '{language}'"
 
     click.secho(title, fg="green")
