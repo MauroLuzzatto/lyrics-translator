@@ -19,9 +19,18 @@
 
 <a href="https://github.com/ambv/black" target="_blank">
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square" alt="Code style: black">
+</a>
+
 
 <a href="https://pycqa.github.io/isort/" target="_blank">
     <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336" alt="Imports: isort">
+</a>
+
+
+<a href="https://github.com/MauroLuzzatto/lyrics-translator/actions?workflow=Tests" target="_blank">
+    <img src="https://github.com/MauroLuzzatto/lyrics-translator/workflows/Tests/badge.svg" alt="Tests">
+</a>
+
 </p>
 
 
