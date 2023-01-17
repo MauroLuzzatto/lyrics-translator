@@ -1,5 +1,3 @@
-import textwrap
-
 import click
 
 from lyrics_translator import LyricsTranslator
@@ -18,11 +16,10 @@ from . import __version__
 @click.option(
     "--testing",
     default=False,
-    help=('Mode of developement, if testing is set to "True" only dummy data is used'),
+    help='Mode of developement, if testing is set to "True" only dummy data is used',
 )
 @click.version_option(version=__version__)
 def main(song, artist, language, testing):
-
     translator = LyricsTranslator(language)
     lyrics = translator.get_song_translation(song, artist, testing)
     title = f"'{song}' by '{artist}' translated into '{language}'"

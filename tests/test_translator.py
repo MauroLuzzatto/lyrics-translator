@@ -6,7 +6,9 @@ short_text = "Hello my friends! How are you doing today?"
 expected_short = "Hallo meine Freunde, wie machen Sie heute?"
 
 long_text = """Importing AutoTokenizer and AutoModelForSeq2SeqLM from transformers."""
-expected_long = """Importieren von AutoTokenizer und AutoModelForSeq2SeqLM aus Transformatoren."""
+expected_long = (
+    """Importieren von AutoTokenizer und AutoModelForSeq2SeqLM aus Transformatoren."""
+)
 
 
 lyrics = """[Verse 2]
@@ -34,17 +36,20 @@ Surfen in den USA"""
 def translator():
     return Translator(language="de")
 
+
 def test_get_model_name(translator):
     assert "t5-small" == translator.get_model_name()
 
 
-@pytest.mark.parametrize("language, lyrics, expected", [
-    ("de", short_text, expected_short),
-    ("de", long_text, expected_long),
-    ("de", lyrics, expected_lyrics),
-])
+@pytest.mark.parametrize(
+    "language, lyrics, expected",
+    [
+        ("de", short_text, expected_short),
+        ("de", long_text, expected_long),
+        ("de", lyrics, expected_lyrics),
+    ],
+)
 def test_translate(language, lyrics, expected):
-
     translator = Translator(language)
     translator.get_translator_pipeline()
     translation = translator.translate(lyrics)

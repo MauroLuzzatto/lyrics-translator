@@ -15,7 +15,6 @@ class Translator(object):
         self.origin_language = origin_language
 
     def get_model_name(self) -> str:
-
         if self.language == "de" and self.origin_language == "en":
             model_name = "t5-small"
         else:
@@ -23,7 +22,6 @@ class Translator(object):
             model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
 
         return model_name
-
 
     @lru_cache(maxsize=5)
     def get_translator_pipeline(self) -> None:
@@ -90,7 +88,6 @@ class Translator(object):
 
 
 if __name__ == "__main__":
-
     language = "de"  # "de"
     short_text = "Hello my friends! How are you doing today?"
 
@@ -173,7 +170,7 @@ if __name__ == "__main__":
         Yeah everybody's gone surfin'
         Surfin' U.S.A12Embed
         """
-    
+
     translator = Translator(language)
     for input in [short_text, long_text, lyrics]:
         translator.get_translator_pipeline()

@@ -50,11 +50,12 @@ class LyricsTranslator(object):
     def get_song_lyrics(self, song, artist, testing: bool = False):
         """retrun only the lyrics of the song"""
         lyrics = Lyrics(song=song, artist=artist, testing=testing)
-        text = lyrics.get_lyrics(genius=self.genius)
+        _ = lyrics.get_lyrics(genius=self.genius)
         return lyrics
 
     def get_song_translation(self, song, artist, testing: bool = False) -> None:
-        """Download the song lyrics from the API and translate them using the Lyrics class."""
+        """Download the song lyrics from the API and translate them using the Lyrics class.
+        """
         lyrics = Lyrics(song=song, artist=artist, testing=testing)
         lyrics.download_lyrics(genius=self.genius)
         lyrics.translate(translator=self.translator, language=self.language)
@@ -67,6 +68,6 @@ class LyricsTranslator(object):
             str: returns the string to create the same instance
         """
         return (
-            f"LyricsTranslator("
+            "LyricsTranslator("
             f" language={self.language}, origin_language={self.origin_language})"
         )
