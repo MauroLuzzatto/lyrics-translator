@@ -14,6 +14,17 @@ class Translator(object):
         self.language = language
         self.origin_language = origin_language
 
+    def get_model_name(self) -> str:
+
+        if self.language == "de" and self.origin_language == "en":
+            model_name = "t5-small"
+        else:
+            print("trying to find the model....")
+            model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
+
+        return model_name
+
+
     @lru_cache(maxsize=5)
     def get_translator_pipeline(self) -> None:
         """[summary]
@@ -22,11 +33,7 @@ class Translator(object):
             ValueError: [description]
 
         """
-        if self.language == "de" and self.origin_language == "en":
-            model_name = "t5-small"
-        else:
-            print("trying to find the model....")
-            model_name = f"Helsinki-NLP/opus-mt-{self.origin_language}-{self.language}"
+        model_name = self.get_model_name()
 
         if model_name in cache:
             self.translator = cache[model_name]
@@ -166,10 +173,11 @@ if __name__ == "__main__":
         Yeah everybody's gone surfin'
         Surfin' U.S.A12Embed
         """
+    
     translator = Translator(language)
-    translator.get_translator_pipeline()
-    # translation = translator.translate(long_text)
-    translation = translator.translate_fast(lyrics)
+    for input in [short_text, long_text, lyrics]:
+        translator.get_translator_pipeline()
+        translation = translator.translate(input)
 
-    print("----" * 10)
-    print(translation)
+        print("----" * 10)
+        print(translation)
