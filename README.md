@@ -40,6 +40,9 @@
 
 **Source Code**: <a href="https://github.com/MauroLuzzatto/lyrics-translator" target="_blank">https://github.com/MauroLuzzatto/lyrics-translator</a>
 
+**Demo**: <a href="https://huggingface.co/spaces/maurol/lyrics-translator" target="_blank">https://huggingface.co/spaces/maurol/lyrics-translator</a>
+
+
 ---
 
 
