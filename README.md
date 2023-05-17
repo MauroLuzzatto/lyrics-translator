@@ -43,10 +43,14 @@
 ---
 
 
-The `LyricsTranslator` downloads lyrics from [genius](https://genius.com/) and uses 🤗[hugging face](https://huggingface.co/) to translate the lyrics into a target language.
+`LyricsTranslator` is a Python module that allows you to download lyrics from the popular music lyrics website [genius](https://genius.com/) and translate them into a target language of your choice. The module uses the powerful 🤗[hugging face](https://huggingface.co/) library for translation, which provides state-of-the-art performance in natural language processing tasks.
+
+With `LyricsTranslator`, you can easily translate the lyrics of your favorite songs into different languages, allowing you to appreciate the beauty and meaning of the lyrics in a language that you're comfortable with. This can be particularly helpful if you're learning a new language or if you want to explore the cultural nuances of a different language.
+
+The module supports all languages that are available on the [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) platform, which includes languages from all around the world. Whether you're interested in German, Spanish, Chinese, Japanese, or any other language, LyricsTranslator has got you covered. The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
 
 
-All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation.The full list of list of languages can be found on 🤗[hugging face](https://huggingface.co/models?other=marian).
+All languages that are supported by [OPUS-MT](https://github.com/Helsinki-NLP/Opus-MT) are available for translation.
 
 - German: `de`
 - Swedish: `sv`

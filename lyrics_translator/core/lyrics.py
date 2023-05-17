@@ -6,16 +6,25 @@ from lyrics_translator.core.utils import MockGeniusSong
 
 
 class Lyrics(object):
-    def __init__(self, song: str, artist: str, testing: bool = None) -> None:
+    def __init__(self, genius, song: str, artist: str, testing: bool = None) -> None:
+        """_summary_
+
+        Args:
+            genius (_type_): _description_
+            song (str): _description_
+            artist (str): _description_
+            testing (bool, optional): _description_. Defaults to None.
+        """
         self.song = song
         self.artist = artist
         self.testing = testing
+        self.genius = genius
 
         self.text: str = None
         self.translation: str = None
         self.language: str = None
 
-    def download_lyrics(self, genius, get_full_info: Optional[bool] = False) -> None:
+    def get_lyrics_text(self, get_full_info: Optional[bool] = False) -> str:
         """Download the lyrics of the song using the `genius` API.
 
         Args:
@@ -27,7 +36,7 @@ class Lyrics(object):
         if self.testing:
             genius_song = MockGeniusSong(lyrics="<test lyrics>")
         else:
-            genius_song = genius.search_song(
+            genius_song = self.genius.search_song(
                 self.song, self.artist, get_full_info=get_full_info
             )
 
@@ -36,13 +45,17 @@ class Lyrics(object):
             raise ValueError(message)
 
         self.text = genius_song.lyrics
+        return self.text
 
-    def translate(self, translator, language: str) -> None:
+    def get_translation(self, translator, language: str) -> str:
         """Translate the lyrics into the target language.
 
         Returns:
             str: _description_
         """
+        if not self.text:
+            self.text = self.get_lyrics_text()
+
         self.language = language
 
         if self.testing:
@@ -50,13 +63,7 @@ class Lyrics(object):
         else:
             self.translation = translator.translate(self.text)
 
-    def get_translation(self, translator, language) -> str:
-        self.translate(translator, language)
         return self.translation
-
-    def get_lyrics(self, genius) -> str:
-        self.download_lyrics(genius)
-        return self.text
 
     def save(self, folder: str = "lyrics", kind: str = "txt") -> None:
         """Save the translated lyrics to a file.

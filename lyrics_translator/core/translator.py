@@ -10,9 +10,14 @@ cache = {}
 
 
 class Translator(object):
-    def __init__(self, language: str, origin_language: str = "en"):
+    def __init__(self, language: str, origin_language: str = "en", model_name=None):
         self.language = language
         self.origin_language = origin_language
+
+        if model_name:
+            self.model_name = model_name
+        else:
+            self.model_name = self.get_model_name()
 
     def get_model_name(self) -> str:
         if self.language == "de" and self.origin_language == "en":
@@ -31,16 +36,15 @@ class Translator(object):
             ValueError: [description]
 
         """
-        model_name = self.get_model_name()
 
-        if model_name in cache:
-            self.translator = cache[model_name]
+        if self.model_name in cache:
+            self.translator = cache[self.model_name]
         else:
             try:
                 tokenizer = AutoTokenizer.from_pretrained(
-                    model_name, model_max_length=512, skip_special_tokens=True
+                    self.model_name, model_max_length=512, skip_special_tokens=True
                 )
-                model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+                model = AutoModelForSeq2SeqLM.from_pretrained(self.model_name)
 
             except OSError as err:
                 message = f'{err} -- language "{self.language}" is not supported!'
@@ -51,11 +55,11 @@ class Translator(object):
                 model=model,
                 tokenizer=tokenizer,
             )
-            cache[model_name] = self.translator
+            cache[self.model_name] = self.translator
 
         print(
             f'Setup translator_pipeline to translate from "{self.origin_language}" to'
-            f' "{self.language}" using "{model_name}"!'
+            f' "{self.language}" using "{self.model_name}"!'
         )
 
     def translate(self, text: str) -> str:
